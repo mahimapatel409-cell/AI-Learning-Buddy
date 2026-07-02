@@ -5,8 +5,18 @@ genai.configure(
     api_key=st.secrets["GEMINI_API_KEY"]
 )
 model = genai.GenerativeModel("gemini-2.5-flash")
-st.set_page_config(page_title="AI Learning Buddy Mahima",
-page_icon="🎓")
+st.set_page_config(
+    page_title="AI Learning Buddy Mahima",
+    page_icon="🎓"
+)
+st.markdown("""
+<style>
+#MainMenu {
+    visibility: hidden;}
+footer {
+    visibility: hidden;}
+</style>
+""", unsafe_allow_html=True)
 st.title("🎓 AI Learning Buddy Mahima")
 topic = st.text_input("Enter a Topic")
 option = st.selectbox(
@@ -41,3 +51,4 @@ if st.button("Generate"):
         response = model.generate_content(prompt)
 
         st.write(response.text)
+
